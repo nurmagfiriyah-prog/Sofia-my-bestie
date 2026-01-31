@@ -1,0 +1,1263 @@
+# Sofia-my-bestie
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Happy Birthday Quest — Sofia 💙 (From Rona)</title>
+  <meta name="theme-color" content="#0b1a3a" />
+  <style>
+    :root{
+      --bg1:#071226;
+      --bg2:#0b1a3a;
+      --bg3:#0d2a63;
+      --card:rgba(255,255,255,.08);
+      --card2:rgba(255,255,255,.12);
+      --stroke:rgba(255,255,255,.14);
+      --text:#eaf3ff;
+      --muted:rgba(234,243,255,.72);
+      --blue:#4cc9ff;
+      --blue2:#2f7bff;
+      --pink:#ff7bd8;
+      --gold:#ffd36b;
+      --shadow: 0 18px 55px rgba(0,0,0,.35);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      overflow-x:hidden;
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(76,201,255,.22), transparent 55%),
+        radial-gradient(1000px 700px at 80% 20%, rgba(47,123,255,.18), transparent 60%),
+        radial-gradient(900px 700px at 55% 85%, rgba(255,123,216,.12), transparent 60%),
+        linear-gradient(160deg, var(--bg1), var(--bg2) 45%, var(--bg3));
+    }
+
+    a{color:inherit}
+    button{
+      border:0;
+      color:var(--text);
+      background:linear-gradient(135deg, rgba(76,201,255,.25), rgba(47,123,255,.18));
+      padding:12px 14px;
+      border-radius:16px;
+      cursor:pointer;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      transition: transform .12s ease, filter .2s ease;
+      min-height:44px;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    button:active{transform:scale(.98)}
+    button:hover{filter:brightness(1.08)}
+    .btn2{
+      background:linear-gradient(135deg, rgba(255,123,216,.20), rgba(255,211,107,.18));
+    }
+    .btnGhost{
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--stroke);
+      box-shadow:none;
+    }
+
+    .wrap{max-width:980px;margin:0 auto;padding:20px 14px 80px}
+    .topbar{
+      position:sticky; top:0; z-index:40;
+      backdrop-filter: blur(12px);
+      background:linear-gradient(to bottom, rgba(7,18,38,.86), rgba(7,18,38,.35));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:980px;margin:0 auto;padding:12px 14px;
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+    }
+    .brand{
+      display:flex; gap:10px; align-items:center;
+      font-weight:800; letter-spacing:.3px;
+    }
+    .pill{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:var(--muted);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    .card{
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .card .hd{
+      padding:16px 16px 10px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+    }
+    .card .hd h1{
+      margin:0;
+      font-size:22px;
+      line-height:1.2;
+    }
+    .card .hd p{margin:8px 0 0;color:var(--muted);font-size:14px}
+    .card .bd{padding:0 16px 16px}
+    .row{display:flex; gap:10px; flex-wrap:wrap}
+    .row > *{flex:1}
+    .mini{
+      border-radius:18px;
+      padding:12px;
+      background:rgba(0,0,0,.14);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .mini h3{margin:0 0 6px;font-size:14px}
+    .mini p{margin:0;color:var(--muted);font-size:13px}
+    .muted{color:var(--muted)}
+    .bigTitle{
+      font-size:34px;
+      margin:10px 0 8px;
+      letter-spacing:.2px;
+    }
+    .spark{
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 260px at 30% 0%, rgba(76,201,255,.22), transparent 60%),
+                  radial-gradient(400px 260px at 90% 40%, rgba(255,123,216,.12), transparent 60%);
+      pointer-events:none;
+      opacity:.85;
+    }
+
+    /* confetti */
+    .confetti{
+      position:fixed; inset:0; pointer-events:none; z-index:90;
+      overflow:hidden;
+    }
+    .c{
+      position:absolute;
+      width:10px; height:16px;
+      border-radius:4px;
+      opacity:.9;
+      transform: translateY(-20px) rotate(0deg);
+      animation: fall 1.9s linear forwards;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,.25));
+    }
+    @keyframes fall{
+      to{transform: translateY(110vh) rotate(720deg); opacity:1}
+    }
+
+    /* click ripple */
+    .ripple{
+      position:fixed;
+      width:16px;height:16px;border-radius:999px;
+      border:2px solid rgba(76,201,255,.65);
+      transform:translate(-50%,-50%) scale(1);
+      animation:rip .55s ease-out forwards;
+      pointer-events:none;
+      z-index:95;
+    }
+    @keyframes rip{
+      to{transform:translate(-50%,-50%) scale(10);opacity:0}
+    }
+    .sparkle{
+      position:fixed;
+      font-size:18px;
+      transform:translate(-50%,-50%);
+      pointer-events:none;
+      z-index:95;
+      animation: pop .9s ease-out forwards;
+      filter: drop-shadow(0 10px 12px rgba(0,0,0,.35));
+    }
+    @keyframes pop{
+      0%{opacity:0; transform:translate(-50%,-50%) scale(.6) rotate(-10deg)}
+      15%{opacity:1}
+      100%{opacity:0; transform:translate(-50%,-80%) scale(1.4) rotate(12deg)}
+    }
+
+    /* modal */
+    .modal{
+      position:fixed; inset:0; z-index:80;
+      display:none; place-items:center;
+      background: rgba(0,0,0,.55);
+      padding:16px;
+    }
+    .modal.show{display:grid}
+    .modal .box{
+      width:min(720px, 96vw);
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(9,24,54,.92), rgba(7,18,38,.86));
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    .modal .box .top{
+      padding:14px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .modal .box .top strong{font-size:14px}
+    .modal .box .content{padding:14px 16px}
+    .modal .box .content p{color:var(--muted); line-height:1.65; margin:0 0 10px}
+    .kbd{
+      display:inline-flex; gap:6px; align-items:center;
+      border:1px solid rgba(255,255,255,.16);
+      padding:6px 10px; border-radius:999px;
+      background:rgba(255,255,255,.06);
+      font-size:12px; color:var(--muted);
+    }
+
+    /* map */
+    .map{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+    @media (max-width:520px){
+      .map{grid-template-columns:1fr}
+    }
+    .tile{
+      padding:14px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+      min-height:92px;
+      transition: transform .12s ease, filter .2s ease;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tile:hover{filter:brightness(1.1)}
+    .tile:active{transform:scale(.99)}
+    .tile.locked{opacity:.55; filter:saturate(.6)}
+    .tile .t{font-weight:800}
+    .tile .d{color:var(--muted); font-size:12px; margin-top:6px; line-height:1.4}
+    .badge{
+      position:absolute; top:10px; right:10px;
+      font-size:12px; padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.20);
+    }
+
+    /* game area */
+    .gameArea{
+      margin-top:12px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.14);
+      overflow:hidden;
+    }
+    .gameTop{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding:12px 12px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .gameTop .title{font-weight:900}
+    .gameBody{padding:14px}
+    canvas{max-width:100%; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); border-radius:18px}
+    .hint{font-size:12px;color:var(--muted); margin-top:10px; line-height:1.5}
+
+    /* achievements */
+    .toast{
+      position:fixed; right:14px; bottom:14px; z-index:99;
+      display:grid; gap:10px;
+      pointer-events:none;
+    }
+    .toast .tbox{
+      pointer-events:none;
+      width:min(340px, 92vw);
+      padding:12px 14px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(76,201,255,.14), rgba(255,123,216,.10));
+      box-shadow: 0 22px 70px rgba(0,0,0,.35);
+      animation: slide .35s ease-out forwards;
+    }
+    @keyframes slide{
+      from{transform:translateY(12px);opacity:0}
+      to{transform:translateY(0);opacity:1}
+    }
+    .tbox strong{display:block;font-size:13px}
+    .tbox span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+
+    /* footer */
+    .footer{
+      margin-top:16px;
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .heart{color:#ff87d9}
+
+    /* secret input */
+    .secretRow{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin-top:10px;
+    }
+    input{
+      width:100%;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      outline:none;
+      min-height:44px;
+    }
+    input::placeholder{color:rgba(234,243,255,.45)}
+    .tiny{font-size:12px;color:var(--muted)}
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <span style="font-size:18px">🎮</span>
+        <span>Happy Birthday Quest</span>
+        <span class="pill">For Sofia • 17 • 1 Feb • Blue Vibes 💙</span>
+      </div>
+      <div class="row" style="gap:8px;justify-content:flex-end">
+        <button class="btnGhost" id="btnMusic">🔊 Music: OFF</button>
+        <button class="btn2" id="btnSurprise">🎁 Surprise</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="grid">
+      <section class="card">
+        <div class="spark"></div>
+        <div class="hd">
+          <div>
+            <h1 class="bigTitle">Sofia’s Birthday Adventure 💙</h1>
+            <p>
+              Hi Sofia! Today is <b>1 February</b> and you officially turn <b>17</b> 🎂✨<br/>
+              This is a birthday game made with love from your Indonesian bestie: <b>Rona</b> 🇮🇩💗
+            </p>
+          </div>
+          <div class="pill">Tap everything 👆</div>
+        </div>
+
+        <div class="bd">
+          <div class="row">
+            <div class="mini">
+              <h3>💙 Sofia Facts (Cute Edition)</h3>
+              <p>
+                • Favorite color: <b>Blue</b><br/>
+                • Favorite food: <b>Borsch</b> 🥣<br/>
+                • Height: <b>160 cm</b> (small but powerful 😭💗)<br/>
+                • Age today: <b>17</b> (main character era!)
+              </p>
+            </div>
+            <div class="mini">
+              <h3>🎯 Mission</h3>
+              <p>
+                Finish mini games to unlock: <b>Secret Letter</b> 💌 + <b>Final Surprise</b> 🎆<br/>
+                Each win gives you a “blue star”. Collect them all ⭐
+              </p>
+            </div>
+          </div>
+
+          <div class="gameArea" id="gameArea">
+            <div class="gameTop">
+              <div class="title" id="gameTitle">🗺️ Game Map</div>
+              <div class="row" style="gap:8px;flex:0 0 auto">
+                <button class="btnGhost" id="btnMap">🗺️ Map</button>
+                <button class="btnGhost" id="btnHint">❔ Hint</button>
+              </div>
+            </div>
+            <div class="gameBody" id="gameBody">
+              <div class="muted" style="font-size:14px;line-height:1.65">
+                Tap a game tile to start. Everything is clickable.
+                If you ever feel lost: press <b>Map</b>.
+              </div>
+
+              <div class="map" id="map"></div>
+
+              <div class="secretRow">
+                <input id="secretInput" placeholder="Type secret code here (try: RONA or BORSCH or 160)..." />
+                <button class="btn2" id="btnSecret">🔐 Unlock</button>
+              </div>
+              <div class="tiny">Tip: There are hidden surprises everywhere. Even the background is clickable ✨</div>
+            </div>
+          </div>
+
+          <div class="footer">
+            Made with <span class="heart">♥</span> by Rona for Sofia — Blue birthday vibes forever 💙
+          </div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <div class="hd">
+          <div>
+            <h1 style="font-size:18px;margin:0">🎒 Inventory</h1>
+            <p>Stars, achievements, and secret surprises.</p>
+          </div>
+          <span class="pill" id="starCount">⭐ 0 / 8</span>
+        </div>
+        <div class="bd">
+          <div class="mini">
+            <h3>🏆 Achievements</h3>
+            <p id="achList" class="muted" style="line-height:1.7;margin:0">
+              • Start the adventure…
+            </p>
+          </div>
+
+          <div style="height:10px"></div>
+
+          <div class="mini">
+            <h3>💌 Message Counter</h3>
+            <p class="muted" style="margin:0;line-height:1.7">
+              Taps detected: <b id="tapCount">0</b><br/>
+              Surprise clicks: <b id="surCount">0</b><br/>
+              Background magic: <b id="bgMagic">0</b>
+            </p>
+          </div>
+
+          <div style="height:10px"></div>
+
+          <div class="mini">
+            <h3>🎂 Birthday Blessing</h3>
+            <p class="muted" style="margin:0;line-height:1.7">
+              Sofia, you are not just turning 17…<br/>
+              you’re unlocking a new level of life ✨<br/>
+              Tap the gift button for a surprise 🎁
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="box">
+      <div class="top">
+        <strong id="modalTitle">Surprise</strong>
+        <button class="btnGhost" id="btnClose">✖ Close</button>
+      </div>
+      <div class="content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <div class="confetti" id="confetti"></div>
+  <div class="toast" id="toast"></div>
+
+<script>
+/* ========= UTIL ========= */
+const $ = (q)=>document.querySelector(q);
+const $$ = (q)=>document.querySelectorAll(q);
+
+const state = {
+  stars: 0,
+  totalStars: 8,
+  achievements: [],
+  taps: 0,
+  surprises: 0,
+  bgMagic: 0,
+  musicOn: false,
+  unlocked: {},
+};
+
+function toast(title, msg){
+  const t = document.createElement('div');
+  t.className = 'tbox';
+  t.innerHTML = `<strong>${title}</strong><span>${msg}</span>`;
+  $('#toast').appendChild(t);
+  setTimeout(()=>t.remove(), 3400);
+}
+
+function addAchievement(text){
+  if(state.achievements.includes(text)) return;
+  state.achievements.push(text);
+  $('#achList').innerHTML = state.achievements.map(a=>`• ${a}`).join('<br/>');
+}
+
+function updateHUD(){
+  $('#starCount').textContent = `⭐ ${state.stars} / ${state.totalStars}`;
+  $('#tapCount').textContent = state.taps;
+  $('#surCount').textContent = state.surprises;
+  $('#bgMagic').textContent = state.bgMagic;
+}
+
+function confettiBurst(n=42){
+  const holder = $('#confetti');
+  for(let i=0;i<n;i++){
+    const el = document.createElement('div');
+    el.className='c';
+    const x = Math.random()*100;
+    el.style.left = x+'vw';
+    el.style.top = (-10 - Math.random()*30)+'px';
+    el.style.animationDuration = (1.4 + Math.random()*1.2)+'s';
+    el.style.transform = `translateY(-20px) rotate(${Math.random()*120}deg)`;
+    const colors = ['#4cc9ff','#2f7bff','#ff7bd8','#ffd36b','#b9fffb','#eaf3ff'];
+    el.style.background = colors[(Math.random()*colors.length)|0];
+    el.style.width = (8+Math.random()*10)+'px';
+    el.style.height = (10+Math.random()*18)+'px';
+    holder.appendChild(el);
+    setTimeout(()=>el.remove(), 2600);
+  }
+}
+
+function openModal(title, html){
+  $('#modalTitle').textContent = title;
+  $('#modalContent').innerHTML = html;
+  $('#modal').classList.add('show');
+}
+function closeModal(){ $('#modal').classList.remove('show'); }
+
+$('#btnClose').addEventListener('click', closeModal);
+$('#modal').addEventListener('click', (e)=>{ if(e.target.id==='modal') closeModal(); });
+
+/* ripple + sparkle on tap */
+function tapFX(x,y){
+  const r = document.createElement('div');
+  r.className='ripple';
+  r.style.left = x+'px';
+  r.style.top = y+'px';
+  document.body.appendChild(r);
+  setTimeout(()=>r.remove(), 700);
+
+  const sp = document.createElement('div');
+  sp.className='sparkle';
+  sp.style.left = x+'px';
+  sp.style.top = y+'px';
+  const emojis = ['💙','✨','⭐','🎂','🧁','💌','🌙','🫶','🥣'];
+  sp.textContent = emojis[(Math.random()*emojis.length)|0];
+  document.body.appendChild(sp);
+  setTimeout(()=>sp.remove(), 950);
+}
+
+window.addEventListener('pointerdown', (e)=>{
+  state.taps++;
+  updateHUD();
+  tapFX(e.clientX, e.clientY);
+});
+
+/* background hidden clicks */
+document.body.addEventListener('click', (e)=>{
+  if(e.target.closest('button') || e.target.closest('input') || e.target.closest('.tile') || e.target.closest('canvas')) return;
+  state.bgMagic++;
+  updateHUD();
+  if(state.bgMagic===7){
+    toast("🌌 Background Magic!", "You found the 7-tap secret. Blue aura activated 💙");
+    confettiBurst(60);
+  }
+  if(state.bgMagic===17){
+    openModal("💙 17 taps?!", `
+      <p>Sofia is 17 today… so you just unlocked the <b>17-tap blessing</b> ✨</p>
+      <p><b>Rona:</b> “Sofia, I’m proud of you. Always choose yourself. Always choose happiness.”</p>
+      <p class="kbd">Achievement unlocked: <b>Main Character 17</b></p>
+    `);
+    addAchievement("Main Character 17 (17 background taps)");
+    confettiBurst(90);
+  }
+});
+
+/* ========= MUSIC (simple webaudio) ========= */
+let audioCtx, master;
+function beep(freq=440, time=0.09, type='sine', vol=0.06){
+  if(!audioCtx) return;
+  const o = audioCtx.createOscillator();
+  const g = audioCtx.createGain();
+  o.type=type;
+  o.frequency.value=freq;
+  g.gain.value=vol;
+  o.connect(g); g.connect(master);
+  o.start();
+  o.stop(audioCtx.currentTime + time);
+}
+function initAudio(){
+  if(audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  master = audioCtx.createGain();
+  master.gain.value = 0.55;
+  master.connect(audioCtx.destination);
+}
+function playClick(){
+  if(!state.musicOn) return;
+  beep(880,0.05,'triangle',0.05);
+  beep(1320,0.06,'sine',0.03);
+}
+document.addEventListener('click', (e)=>{
+  if(e.target.closest('button') || e.target.closest('.tile')) playClick();
+}, true);
+
+$('#btnMusic').addEventListener('click', async ()=>{
+  initAudio();
+  await audioCtx.resume();
+  state.musicOn = !state.musicOn;
+  $('#btnMusic').textContent = state.musicOn ? "🔊 Music: ON" : "🔇 Music: OFF";
+  toast("🎵 Music", state.musicOn ? "Blue vibe music enabled!" : "Music turned off.");
+  if(state.musicOn){
+    beep(523,0.09,'sine',0.06);
+    beep(659,0.09,'sine',0.05);
+    beep(784,0.11,'sine',0.05);
+  }
+});
+
+/* ========= SURPRISE BUTTON ========= */
+const surpriseMessages = [
+  `Sofia 💙 You’re not just cute… you’re <b>strong</b>. And I love that about you. — Rona`,
+  `Happy 17th Birthday! 🎂 Your life is a game and you’re leveling up ✨`,
+  `Fun fact: 160cm = perfect height for receiving forehead kisses 😭💗`,
+  `If you eat borsch today, it counts as a birthday power-up 🥣 +10 HP`,
+  `Blue is your color… but honestly, you shine in every color 🌈`,
+  `Rona says: “Sofia, thank you for being my best friend. I’m always here.” 💌`,
+  `🎁 Secret: Try typing <b>RONA</b> into the secret box 👀`,
+  `🎁 Secret: Try typing <b>BORSCH</b> 👀`,
+  `🎁 Secret: Try typing <b>160</b> 👀`,
+];
+
+$('#btnSurprise').addEventListener('click', ()=>{
+  state.surprises++;
+  updateHUD();
+  const msg = surpriseMessages[(Math.random()*surpriseMessages.length)|0];
+  openModal("🎁 Surprise!", `<p>${msg}</p><p class="kbd">Tap more for more surprises ✨</p>`);
+  confettiBurst(50);
+  addAchievement("Clicked the Surprise Button 🎁");
+});
+
+/* ========= MAP / GAMES ========= */
+const games = [
+  { id:'g1', title:'⭐ Star Catch (Tap Game)', desc:'Catch blue stars. Tap fast!', star: true },
+  { id:'g2', title:'🧁 Cake Tap 17', desc:'Tap the cake 17 times to level up.', star: true },
+  { id:'g3', title:'🥣 Borsch Memory', desc:'Remember the borsch ingredients.', star: true },
+  { id:'g4', title:'💙 Blue Dodge', desc:'Dodge obstacles for 17 seconds.', star: true },
+  { id:'g5', title:'🔤 Sofia Word Puzzle', desc:'Unscramble a birthday sentence.', star: true },
+  { id:'g6', title:'🎯 Tap Targets', desc:'Hit 10 targets. No stress, just fun.', star: true },
+  { id:'g7', title:'🌙 Moon Quiz', desc:'Cute quiz about Sofia facts.', star: true },
+  { id:'g8', title:'💌 Final Letter', desc:'Unlock the final letter from Rona.', star: false, locked:true },
+];
+
+function renderMap(){
+  const map = $('#map');
+  map.innerHTML='';
+  games.forEach((g,idx)=>{
+    const locked = g.locked && state.stars < 7; // final unlock condition
+    const el = document.createElement('div');
+    el.className = 'tile' + (locked?' locked':'');
+    el.dataset.id = g.id;
+    el.innerHTML = `
+      <div class="badge">${locked?'🔒 Locked': (state.unlocked[g.id]?'✅ Cleared':'▶ Play')}</div>
+      <div class="t">${idx+1}. ${g.title}</div>
+      <div class="d">${g.desc}</div>
+    `;
+    el.addEventListener('click', ()=>{
+      if(locked){
+        toast("🔒 Locked", "Collect at least 7 stars to unlock the final letter 💌");
+        return;
+      }
+      startGame(g.id);
+    });
+    map.appendChild(el);
+  });
+}
+
+function showMap(){
+  $('#gameTitle').textContent = "🗺️ Game Map";
+  $('#gameBody').innerHTML = `
+    <div class="muted" style="font-size:14px;line-height:1.65">
+      Choose a mini game. Win to collect stars ⭐<br/>
+      <b>Goal:</b> Collect <b>7</b> stars to unlock the final letter 💌
+    </div>
+    <div class="map" id="map"></div>
+    <div class="secretRow">
+      <input id="secretInput" placeholder="Type secret code here (try: RONA or BORSCH or 160)..." />
+      <button class="btn2" id="btnSecret">🔐 Unlock</button>
+    </div>
+    <div class="tiny">Everything is clickable. Even the background ✨</div>
+  `;
+  hookSecret();
+  renderMap();
+}
+
+$('#btnMap').addEventListener('click', showMap);
+
+$('#btnHint').addEventListener('click', ()=>{
+  openModal("❔ Hint", `
+    <p><b>How to win fast:</b></p>
+    <p>• Tap fast in <b>Star Catch</b> ⭐<br/>
+       • Tap cake exactly <b>17 times</b> 🎂<br/>
+       • Secret codes: <b>RONA</b>, <b>BORSCH</b>, <b>160</b> 🔐</p>
+    <p class="kbd">Tip: If you feel sad, tap Surprise 🎁</p>
+  `);
+});
+
+/* ========= SECRET CODES ========= */
+function hookSecret(){
+  const inp = $('#secretInput');
+  const btn = $('#btnSecret');
+  if(!inp || !btn) return;
+  btn.addEventListener('click', ()=>{
+    const v = (inp.value||'').trim().toUpperCase();
+    if(!v){ toast("🔐 Secret", "Type a code first ✨"); return; }
+
+    if(v==="RONA"){
+      confettiBurst(120);
+      addAchievement("Unlocked Secret: RONA 💗");
+      openModal("💗 Secret Room — RONA", `
+        <p><b>Rona:</b> Sofia… thank you for existing in my life.</p>
+        <p>You’re my favorite person to talk to, laugh with, and be weird with 😭💙</p>
+        <p>On your 17th birthday, I wish you:</p>
+        <p>✨ peace<br/>✨ health<br/>✨ happiness<br/>✨ and a love that never hurts you</p>
+      `);
+      return;
+    }
+
+    if(v==="BORSCH"){
+      confettiBurst(90);
+      addAchievement("Unlocked Secret: BORSCH 🥣");
+      openModal("🥣 Secret Recipe Scroll", `
+        <p>Congrats Sofia, you unlocked the <b>Borsch Power-Up</b>!</p>
+        <p>When you eat borsch today, you gain:</p>
+        <p>+10 Happiness<br/>+10 Warmth<br/>+100 Comfort</p>
+        <p class="kbd">Rona approves 🫶</p>
+      `);
+      return;
+    }
+
+    if(v==="160"){
+      confettiBurst(70);
+      addAchievement("Unlocked Secret: 160cm 💙");
+      openModal("📏 160cm Secret", `
+        <p>160cm = the perfect height for being:</p>
+        <p>• cute<br/>• iconic<br/>• unstoppable</p>
+        <p>Rona says: “Sofia, you are small but your heart is HUGE.” 💗</p>
+      `);
+      return;
+    }
+
+    toast("❌ Wrong code", "Try: RONA / BORSCH / 160");
+  });
+}
+hookSecret();
+
+/* ========= STAR SYSTEM ========= */
+function giveStar(gameId){
+  if(state.unlocked[gameId]) return;
+  state.unlocked[gameId] = true;
+  state.stars++;
+  updateHUD();
+  confettiBurst(70);
+  toast("⭐ Star collected!", `You earned a star! Total: ${state.stars}`);
+  addAchievement(`Won ${gameId.toUpperCase()} ⭐`);
+
+  if(state.stars >= 7){
+    toast("💌 Almost there!", "Final Letter is now unlocked on the map!");
+  }
+}
+
+/* ========= GAME IMPLEMENTATIONS ========= */
+function startGame(id){
+  const g = games.find(x=>x.id===id);
+  $('#gameTitle').textContent = g.title;
+
+  if(id==='g1') return gameStarCatch();
+  if(id==='g2') return gameCakeTap17();
+  if(id==='g3') return gameBorschMemory();
+  if(id==='g4') return gameBlueDodge();
+  if(id==='g5') return gameWordPuzzle();
+  if(id==='g6') return gameTapTargets();
+  if(id==='g7') return gameMoonQuiz();
+  if(id==='g8') return gameFinalLetter();
+}
+
+function gameShell(html, hint=""){
+  $('#gameBody').innerHTML = `
+    ${html}
+    <div class="hint">${hint}</div>
+    <div class="row" style="margin-top:12px">
+      <button class="btnGhost" id="btnBack">⬅ Back to Map</button>
+      <button class="btn2" id="btnRetry">🔁 Retry</button>
+    </div>
+  `;
+  $('#btnBack').addEventListener('click', showMap);
+}
+
+function gameStarCatch(){
+  let score=0, time=12;
+  let alive=true;
+  gameShell(`
+    <div class="muted">Tap the blue stars as fast as you can. Get <b>12</b> points to win ⭐</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+      <div class="pill">Score: <b id="sc">0</b></div>
+      <div class="pill">Time: <b id="tm">12</b>s</div>
+    </div>
+    <div style="margin-top:12px;display:grid;place-items:center">
+      <canvas id="cv" width="360" height="360"></canvas>
+    </div>
+  `, "Tip: Tap on the stars. Mobile-friendly!");
+
+  const cv = $('#cv');
+  const ctx = cv.getContext('2d');
+
+  let stars = [];
+  function spawn(){
+    stars.push({
+      x: 30 + Math.random()*(cv.width-60),
+      y: 30 + Math.random()*(cv.height-60),
+      r: 12 + Math.random()*10,
+      life: 50 + Math.random()*30
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    ctx.fillStyle = "rgba(255,255,255,.04)";
+    ctx.fillRect(0,0,cv.width,cv.height);
+
+    // soft grid
+    ctx.strokeStyle="rgba(255,255,255,.06)";
+    for(let i=0;i<12;i++){
+      ctx.beginPath();
+      ctx.moveTo(0,i*30);
+      ctx.lineTo(cv.width,i*30);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(i*30,0);
+      ctx.lineTo(i*30,cv.height);
+      ctx.stroke();
+    }
+
+    stars.forEach(s=>{
+      // glow
+      const grad = ctx.createRadialGradient(s.x,s.y,2,s.x,s.y,s.r*2.4);
+      grad.addColorStop(0,"rgba(76,201,255,.85)");
+      grad.addColorStop(1,"rgba(76,201,255,0)");
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r*2.4,0,Math.PI*2);
+      ctx.fill();
+
+      ctx.fillStyle="rgba(234,243,255,.95)";
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fill();
+    });
+  }
+
+  function tick(){
+    if(!alive) return;
+    if(Math.random()<0.22) spawn();
+    stars.forEach(s=>s.life--);
+    stars = stars.filter(s=>s.life>0);
+    draw();
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  const timer = setInterval(()=>{
+    if(!alive) return;
+    time--;
+    $('#tm').textContent=time;
+    if(time<=0){
+      alive=false;
+      clearInterval(timer);
+      if(score>=12){
+        giveStar('g1');
+        openModal("⭐ You won!", `<p>SOFIA YOU ARE SO FAST 😭💙</p><p>Star unlocked ⭐</p>`);
+      }else{
+        openModal("😅 Time's up!", `<p>Score: <b>${score}</b>. Try again bestie 💙</p>`);
+      }
+    }
+  },1000);
+
+  function hit(x,y){
+    for(let i=stars.length-1;i>=0;i--){
+      const s=stars[i];
+      const dx=x-s.x, dy=y-s.y;
+      if(Math.sqrt(dx*dx+dy*dy) <= s.r+8){
+        stars.splice(i,1);
+        score++;
+        $('#sc').textContent=score;
+        confettiBurst(6);
+        if(state.musicOn) beep(880,0.05,'sine',0.05);
+        return;
+      }
+    }
+  }
+
+  cv.addEventListener('pointerdown', (e)=>{
+    const r=cv.getBoundingClientRect();
+    const x=(e.clientX-r.left)*(cv.width/r.width);
+    const y=(e.clientY-r.top)*(cv.height/r.height);
+    hit(x,y);
+  });
+
+  $('#btnRetry').addEventListener('click', ()=>gameStarCatch());
+}
+
+function gameCakeTap17(){
+  let taps=0;
+  gameShell(`
+    <div class="muted">Tap the cake exactly <b>17</b> times 🎂</div>
+    <div style="margin-top:12px;display:grid;place-items:center;gap:10px">
+      <div class="pill">Taps: <b id="taps">0</b> / 17</div>
+      <button id="cakeBtn" class="btn2" style="font-size:22px;padding:18px 16px;border-radius:24px;width:min(420px,100%)">
+        🎂 TAP THE CAKE 🎂
+      </button>
+      <div class="muted" style="font-size:13px;text-align:center">
+        When you reach 17, Sofia becomes <b>LEVEL 17</b> 💙
+      </div>
+    </div>
+  `, "Tip: Tap with your thumb. It counts fast!");
+
+  $('#cakeBtn').addEventListener('click', ()=>{
+    taps++;
+    $('#taps').textContent=taps;
+    confettiBurst(10);
+    if(state.musicOn) beep(659,0.06,'triangle',0.05);
+
+    if(taps===17){
+      giveStar('g2');
+      openModal("🎂 LEVEL UP!", `
+        <p>Happy 17th Birthday Sofia 💙</p>
+        <p><b>Rona:</b> “You’re growing into someone amazing. Don’t forget how special you are.”</p>
+      `);
+      confettiBurst(140);
+      addAchievement("Cake Tap 17 completed 🎂");
+    }
+    if(taps>17){
+      openModal("😂 Too many taps!", `<p>You tapped <b>${taps}</b> times. Reset and do exactly 17 😭💙</p>`);
+    }
+  });
+
+  $('#btnRetry').addEventListener('click', ()=>gameCakeTap17());
+}
+
+function gameBorschMemory(){
+  const ingredients = ["BEET", "CABBAGE", "CARROT", "POTATO", "GARLIC"];
+  const showTime = 2600;
+
+  gameShell(`
+    <div class="muted">Remember the ingredients for borsch 🥣</div>
+    <div class="row" style="margin-top:10px">
+      <div class="pill">Ingredients: <b id="ing"></b></div>
+    </div>
+    <div style="margin-top:12px">
+      <div class="muted">After it hides, type them separated by commas.</div>
+      <input id="ans" placeholder="Example: beet, cabbage, ..." style="margin-top:10px" />
+      <div class="row" style="margin-top:10px">
+        <button class="btn2" id="check">✅ Check</button>
+      </div>
+    </div>
+  `, "Tip: Sofia loves borsch. So this is a love test 😭💙");
+
+  $('#ing').textContent = ingredients.join(" • ");
+  setTimeout(()=>{
+    $('#ing').textContent = "??? (hidden)";
+    toast("🧠 Memory time!", "Now type the ingredients!");
+  }, showTime);
+
+  $('#check').addEventListener('click', ()=>{
+    const v = ($('#ans').value||'').toUpperCase().replace(/\s/g,'');
+    const ok = ingredients.every(x=>v.includes(x));
+    if(ok){
+      giveStar('g3');
+      openModal("🥣 Perfect!", `<p>YESSS Sofia! Borsch queen approved 💙</p>`);
+      confettiBurst(120);
+    }else{
+      openModal("😅 Not yet", `<p>Try again! Hint: beet + cabbage + carrot + potato + garlic</p>`);
+    }
+  });
+
+  $('#btnRetry').addEventListener('click', ()=>gameBorschMemory());
+}
+
+function gameBlueDodge(){
+  gameShell(`
+    <div class="muted">Survive for <b>17 seconds</b> by moving the blue circle. Tap/drag to move 💙</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+      <div class="pill">Time left: <b id="tl">17</b>s</div>
+    </div>
+    <div style="margin-top:12px;display:grid;place-items:center">
+      <canvas id="cv" width="360" height="360"></canvas>
+    </div>
+  `, "Tip: Hold your finger and drag the circle.");
+
+  const cv=$('#cv'), ctx=cv.getContext('2d');
+  let px=180, py=280, pr=16;
+  let enemies=[];
+  let alive=true;
+  let t=17;
+
+  function spawnEnemy(){
+    enemies.push({
+      x: Math.random()*cv.width,
+      y: -20,
+      r: 10 + Math.random()*10,
+      vy: 2 + Math.random()*3.2
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    ctx.fillStyle="rgba(255,255,255,.04)";
+    ctx.fillRect(0,0,cv.width,cv.height);
+
+    // player glow
+    let g=ctx.createRadialGradient(px,py,2,px,py,60);
+    g.addColorStop(0,"rgba(76,201,255,.9)");
+    g.addColorStop(1,"rgba(76,201,255,0)");
+    ctx.fillStyle=g;
+    ctx.beginPath(); ctx.arc(px,py,60,0,Math.PI*2); ctx.fill();
+
+    // player
+    ctx.fillStyle="rgba(234,243,255,.96)";
+    ctx.beginPath(); ctx.arc(px,py,pr,0,Math.PI*2); ctx.fill();
+
+    // enemies
+    enemies.forEach(e=>{
+      ctx.fillStyle="rgba(255,123,216,.9)";
+      ctx.beginPath(); ctx.arc(e.x,e.y,e.r,0,Math.PI*2); ctx.fill();
+    });
+  }
+
+  function collide(a,b){
+    const dx=a.x-b.x, dy=a.y-b.y;
+    return Math.sqrt(dx*dx+dy*dy) < (a.r+b.r);
+  }
+
+  function loop(){
+    if(!alive) return;
+    if(Math.random()<0.25) spawnEnemy();
+    enemies.forEach(e=>e.y += e.vy);
+    enemies = enemies.filter(e=>e.y < cv.height+40);
+
+    // collision
+    for(const e of enemies){
+      if(collide({x:px,y:py,r:pr},{x:e.x,y:e.y,r:e.r})){
+        alive=false;
+        openModal("💥 Oops!", `<p>You got hit 😭 but it's okay Sofia 💙 Retry!</p>`);
+        return;
+      }
+    }
+
+    draw();
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  const timer=setInterval(()=>{
+    if(!alive) return;
+    t--;
+    $('#tl').textContent=t;
+    if(t<=0){
+      alive=false;
+      clearInterval(timer);
+      giveStar('g4');
+      openModal("💙 Survivor!", `<p>17 seconds survived = Sofia is unstoppable 😭💙</p>`);
+      confettiBurst(150);
+    }
+  },1000);
+
+  function moveTo(clientX, clientY){
+    const r=cv.getBoundingClientRect();
+    px=(clientX-r.left)*(cv.width/r.width);
+    py=(clientY-r.top)*(cv.height/r.height);
+    px=Math.max(pr,Math.min(cv.width-pr,px));
+    py=Math.max(pr,Math.min(cv.height-pr,py));
+  }
+
+  cv.addEventListener('pointerdown',(e)=>moveTo(e.clientX,e.clientY));
+  cv.addEventListener('pointermove',(e)=>{ if(e.buttons) moveTo(e.clientX,e.clientY); });
+
+  $('#btnRetry').addEventListener('click', ()=>gameBlueDodge());
+}
+
+function gameWordPuzzle(){
+  const target = "HAPPY BIRTHDAY SOFIA";
+  const scrambled = "YAPHP ITRHADBY AFISO".split(' ');
+  gameShell(`
+    <div class="muted">Unscramble the sentence 💙</div>
+    <div class="mini" style="margin-top:12px">
+      <h3>Scrambled</h3>
+      <p style="font-size:18px;letter-spacing:2px;margin:0"><b>${scrambled.join(' ')}</b></p>
+    </div>
+    <div style="margin-top:12px">
+      <input id="ans" placeholder="Type the correct sentence..." />
+      <div class="row" style="margin-top:10px">
+        <button class="btn2" id="check">✅ Check</button>
+      </div>
+    </div>
+  `, "Tip: It's the classic birthday sentence!");
+
+  $('#check').addEventListener('click', ()=>{
+    const v = ($('#ans').value||'').toUpperCase().replace(/\s+/g,' ').trim();
+    if(v===target){
+      giveStar('g5');
+      openModal("🔤 Perfect!", `<p>YESSS 💙</p><p><b>${target}</b></p>`);
+      confettiBurst(120);
+    }else{
+      openModal("😅 Not yet", `<p>Try again! Hint: starts with HAPPY</p>`);
+    }
+  });
+
+  $('#btnRetry').addEventListener('click', ()=>gameWordPuzzle());
+}
+
+function gameTapTargets(){
+  let hit=0;
+  gameShell(`
+    <div class="muted">Hit <b>10</b> targets 🎯</div>
+    <div class="pill" style="margin-top:10px">Hit: <b id="hit">0</b> / 10</div>
+    <div style="margin-top:12px;display:grid;place-items:center">
+      <canvas id="cv" width="360" height="360"></canvas>
+    </div>
+  `, "Tip: Targets appear randomly. Tap them fast!");
+
+  const cv=$('#cv'), ctx=cv.getContext('2d');
+  let tx=180, ty=180, tr=26;
+
+  function place(){
+    tx=40+Math.random()*(cv.width-80);
+    ty=40+Math.random()*(cv.height-80);
+    tr=18+Math.random()*18;
+  }
+  place();
+
+  function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    ctx.fillStyle="rgba(255,255,255,.04)";
+    ctx.fillRect(0,0,cv.width,cv.height);
+
+    // rings
+    for(let i=0;i<4;i++){
+      ctx.strokeStyle = `rgba(76,201,255,${0.20+i*0.12})`;
+      ctx.lineWidth=3;
+      ctx.beginPath();
+      ctx.arc(tx,ty,tr+(i*10),0,Math.PI*2);
+      ctx.stroke();
+    }
+    ctx.fillStyle="rgba(234,243,255,.92)";
+    ctx.beginPath(); ctx.arc(tx,ty,tr,0,Math.PI*2); ctx.fill();
+  }
+  draw();
+
+  function tap(x,y){
+    const dx=x-tx, dy=y-ty;
+    if(Math.sqrt(dx*dx+dy*dy) <= tr+12){
+      hit++;
+      $('#hit').textContent=hit;
+      confettiBurst(10);
+      if(state.musicOn) beep(784,0.06,'sine',0.05);
+      place();
+      draw();
+      if(hit>=10){
+        giveStar('g6');
+        openModal("🎯 Winner!", `<p>Sofia aim is PERFECT 💙</p>`);
+        confettiBurst(140);
+      }
+    }
+  }
+
+  cv.addEventListener('pointerdown', (e)=>{
+    const r=cv.getBoundingClientRect();
+    const x=(e.clientX-r.left)*(cv.width/r.width);
+    const y=(e.clientY-r.top)*(cv.height/r.height);
+    tap(x,y);
+  });
+
+  $('#btnRetry').addEventListener('click', ()=>gameTapTargets());
+}
+
+function gameMoonQuiz(){
+  const q = [
+    {q:"When is Sofia's birthday?", a:["1 February","2 February","1 March"], correct:0},
+    {q:"Sofia's favorite color?", a:["Pink","Blue","Green"], correct:1},
+    {q:"Sofia's favorite food?", a:["Borsch","Pizza","Sushi"], correct:0},
+    {q:"Sofia's height?", a:["150","160","170"], correct:1},
+  ];
+  let idx=0, score=0;
+
+  function render(){
+    const cur=q[idx];
+    gameShell(`
+      <div class="muted">Answer the quiz 💙 (4 questions)</div>
+      <div class="mini" style="margin-top:12px">
+        <h3>Q${idx+1}. ${cur.q}</h3>
+        <div class="row" style="margin-top:10px">
+          ${cur.a.map((t,i)=>`<button class="btnGhost opt" data-i="${i}">${t}</button>`).join('')}
+        </div>
+      </div>
+      <div class="pill" style="margin-top:10px">Score: <b id="sc">${score}</b></div>
+    `, "Tip: You already know these 😭💙");
+
+    $$('.opt').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const i=+btn.dataset.i;
+        if(i===cur.correct){
+          score++;
+          confettiBurst(18);
+          toast("✅ Correct!", "Sofia is smart 😭💙");
+        }else{
+          toast("❌ Oops!", "It's okay bestie, keep going 💙");
+        }
+        idx++;
+        if(idx>=q.length){
+          if(score>=3){
+            giveStar('g7');
+            openModal("🌙 Quiz Passed!", `<p>Score: <b>${score}/4</b> 💙</p><p>You unlocked a star ⭐</p>`);
+            confettiBurst(140);
+          }else{
+            openModal("🌙 Try again", `<p>Score: <b>${score}/4</b> 💙 Retry and get 3+!</p>`);
+          }
+          return;
+        }
+        render();
+      });
+    });
+
+    $('#btnRetry').addEventListener('click', ()=>gameMoonQuiz());
+  }
+  render();
+}
+
+function gameFinalLetter(){
+  if(state.stars < 7){
+    openModal("🔒 Locked", `<p>Collect <b>7 stars</b> first 💙</p>`);
+    return;
+  }
+
+  state.unlocked['g8']=true;
+  updateHUD();
+
+  openModal("💌 Final Letter", `
+    <p><b>Dear Sofia 💙</b></p>
+    <p>Happy 17th Birthday, my bestie.</p>
+    <p>I just want you to know… you are loved. You are important. You matter.</p>
+    <p>Even if the world is loud, even if life is hard sometimes… I will always be proud of you.</p>
+    <p>You are my blue sky person — calm, beautiful, and comforting.</p>
+    <p><b>Rona</b> 🇮🇩💗</p>
+    <p class="kbd">Achievement: Bestie Forever 💙</p>
+  `);
+
+  confettiBurst(220);
+  addAchievement("Unlocked Final Letter 💌");
+  toast("🎆 Final Surprise!", "Tap Surprise button again for more love 💙");
+}
+
+/* init */
+addAchievement("Adventure started 🎮");
+updateHUD();
+renderMap();
+</script>
+</body>
+              </html>
